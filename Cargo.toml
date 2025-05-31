@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 anvil = { git = "https://github.com/paramatrix-dev/anvil/", rev = "4c70b77268503bffb53d6bd95aed46cc4800dc1a", version = "0.1.0" }
 bevy = "0.16.1"
+stl_io = "0.8.3"
 
 [dev-dependencies]
 bevy_simple_subsecond_system = { git = "https://github.com/TheBevyFlock/bevy_simple_subsecond_system", rev = "7787bcd13d6ba649e4e6ae49660579e950d35f6d" }
