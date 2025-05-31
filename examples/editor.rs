@@ -1,6 +1,11 @@
 use bevy::prelude::*;
 use bevy_simple_subsecond_system::prelude::*;
 
+use bevy_anvil::{
+    anvil::{Axis3D, Cuboid, Cylinder, Point3D, angle, length},
+    part_to_mesh,
+};
+
 fn main() {
     App::new()
         .add_plugins((DefaultPlugins, SimpleSubsecondPlugin::default()))
@@ -43,9 +48,6 @@ fn add_cube(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    use anvil::{Axis3D, Cuboid, Cylinder, Point3D, angle, length};
-    use bevy_anvil::part_to_mesh;
-
     info!("Rerunning add_cube");
 
     let block_width = length!(16 mm);
