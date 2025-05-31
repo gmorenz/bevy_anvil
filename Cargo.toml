@@ -8,4 +8,16 @@ anvil = { git = "https://github.com/paramatrix-dev/anvil/", rev = "4c70b77268503
 bevy = "0.16.1"
 
 [dev-dependencies]
-bevy_simple_subsecond_system = "0.1.11"
+bevy_simple_subsecond_system = { git = "https://github.com/TheBevyFlock/bevy_simple_subsecond_system", rev = "7787bcd13d6ba649e4e6ae49660579e950d35f6d" }
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
