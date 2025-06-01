@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-anvil = { git = "https://github.com/paramatrix-dev/anvil/", rev = "4c70b77268503bffb53d6bd95aed46cc4800dc1a", version = "0.1.0" }
+anvil = { git = "https://github.com/paramatrix-dev/anvil/", rev = "7ae04509082d9a66839028925e39e6262e0af3e5", default-features = true }
 bevy = "0.16.1"
 stl_io = "0.8.3"
 

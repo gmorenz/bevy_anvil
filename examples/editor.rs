@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use bevy_simple_subsecond_system::prelude::*;
 
 use bevy_anvil::{
-    anvil::{Axis3D, Cuboid, Cylinder, Point3D, angle, length},
+    anvil::{Axis3D, Cuboid, Cylinder, IntoAngle as _, IntoLength as _, Point3D},
     part_to_mesh,
 };
 
@@ -50,13 +50,13 @@ fn add_cube(
 ) {
     info!("Rerunning add_cube");
 
-    let block_width = length!(16 mm);
-    let block_height = length!(9.6 mm);
-    let stud_height = length!(11.2 mm) - block_height;
-    let stud_distance = length!(8 mm);
-    let stud_diameter = length!(4.8 mm);
-    let thickness = length!(1.2 mm);
-    let tube_diameter = length!(6.5 mm);
+    let block_width = 16.mm();
+    let block_height = 9.6.mm();
+    let stud_height = 11.2.mm() - block_height;
+    let stud_distance = 8.mm();
+    let stud_diameter = 4.8.mm();
+    let thickness = 1.2.mm();
+    let tube_diameter = 6.5.mm();
 
     let block = Cuboid::from_dim(block_width, block_width, block_height);
 
@@ -73,7 +73,7 @@ fn add_cube(
         block_width - thickness,
         block_height,
     )
-    .move_to(Point3D::new(length!(0), length!(0), thickness * -0.5));
+    .move_to(Point3D::new(0.0.mm(), 0.0.mm(), thickness * -0.5));
 
     let inner_tube = Cylinder::from_diameter(tube_diameter, block_height - thickness).subtract(
         &Cylinder::from_diameter(tube_diameter - thickness / 2., block_height - thickness),
@@ -83,7 +83,7 @@ fn add_cube(
         .add(&studs)
         .subtract(&inner_block)
         .add(&inner_tube)
-        .rotate_around(Axis3D::x(), angle!(-90 deg));
+        .rotate_around(Axis3D::x(), -90.0.deg());
 
     let mesh = match part_to_mesh(part) {
         Ok(mesh) => mesh,
