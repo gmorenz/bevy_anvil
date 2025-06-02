@@ -12,7 +12,7 @@ See `examples/editor.rs`
 
 To run the editor with hot-reloading:
 
-1. Follow instructions here to set up dx/.cargo/config.toml: https://github.com/TheBevyFlock/bevy_simple_subsecond_system/?tab=readme-ov-file#first-time-installation
+1. Follow instructions here to set up `dx` and `.cargo/config.toml`: https://github.com/TheBevyFlock/bevy_simple_subsecond_system/?tab=readme-ov-file#first-time-installation
 2. Run `dx serve --hot-patch --features dynamic --example editor`
 
 Using this library with hot patching requires `--features dynamic`, which links `anvil` dynamically instead of statically, because of [this issue](https://github.com/DioxusLabs/dioxus/issues/4237).
