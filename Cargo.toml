@@ -4,12 +4,16 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+anvil_dylib = { path = "anvil_dylib", optional = true }
 anvil = { git = "https://github.com/paramatrix-dev/anvil/", rev = "7ae04509082d9a66839028925e39e6262e0af3e5", default-features = true }
 bevy = "0.16.1"
 stl_io = "0.8.3"
 
 [dev-dependencies]
-bevy_simple_subsecond_system = { git = "https://github.com/TheBevyFlock/bevy_simple_subsecond_system", rev = "7787bcd13d6ba649e4e6ae49660579e950d35f6d" }
+bevy_simple_subsecond_system = { git = "https://github.com/TheBevyFlock/bevy_simple_subsecond_system", rev = "e912f4494a8643385c54498020e5ee243be133d6" }
+
+[features]
+dynamic = ["anvil_dylib"]
 
 [profile]
 

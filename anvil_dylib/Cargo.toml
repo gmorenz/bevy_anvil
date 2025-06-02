@@ -1,0 +1,10 @@
+[package]
+name = "anvil_dylib"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["dylib"]
+
+[dependencies]
+anvil = { git = "https://github.com/paramatrix-dev/anvil/", rev = "7ae04509082d9a66839028925e39e6262e0af3e5", default-features = true }

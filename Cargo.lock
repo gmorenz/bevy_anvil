@@ -157,6 +157,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "anvil_dylib"
+version = "0.1.0"
+dependencies = [
+ "anvil",
+]
+
+[[package]]
 name = "approx"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -370,6 +377,7 @@ name = "bevy_anvil"
 version = "0.1.0"
 dependencies = [
  "anvil",
+ "anvil_dylib",
  "bevy",
  "bevy_simple_subsecond_system",
  "stl_io",
@@ -1082,7 +1090,7 @@ dependencies = [
 [[package]]
 name = "bevy_simple_subsecond_system"
 version = "0.2.0"
-source = "git+https://github.com/TheBevyFlock/bevy_simple_subsecond_system?rev=7787bcd13d6ba649e4e6ae49660579e950d35f6d#7787bcd13d6ba649e4e6ae49660579e950d35f6d"
+source = "git+https://github.com/TheBevyFlock/bevy_simple_subsecond_system?rev=e912f4494a8643385c54498020e5ee243be133d6#e912f4494a8643385c54498020e5ee243be133d6"
 dependencies = [
  "bevy_app",
  "bevy_derive",
@@ -1102,7 +1110,7 @@ dependencies = [
 [[package]]
 name = "bevy_simple_subsecond_system_macros"
 version = "0.1.9"
-source = "git+https://github.com/TheBevyFlock/bevy_simple_subsecond_system?rev=7787bcd13d6ba649e4e6ae49660579e950d35f6d#7787bcd13d6ba649e4e6ae49660579e950d35f6d"
+source = "git+https://github.com/TheBevyFlock/bevy_simple_subsecond_system?rev=e912f4494a8643385c54498020e5ee243be133d6#e912f4494a8643385c54498020e5ee243be133d6"
 dependencies = [
  "proc-macro2",
  "quote",

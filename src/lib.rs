@@ -4,6 +4,14 @@ use anvil::Part;
 use bevy::render::mesh::Mesh;
 use stl::{read_stl, stl_to_triangle_mesh, stl_to_wireframe_mesh};
 
+#[cfg(feature = "dynamic")]
+#[expect(
+    unused_imports,
+    clippy::single_component_path_imports,
+    reason = "Using to force linking."
+)]
+use anvil_dylib;
+
 mod stl;
 
 pub use anvil;
