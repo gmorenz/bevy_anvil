@@ -1,10 +1,36 @@
-# Needed for bevy simple subsecond
+# Bevy Simple Subsecond Configuration
+
+[unstable]
+codegen-backend = true
+
+[profile]
+incremental = true
+
+[profile.dev]
+codegen-backend = "cranelift"
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+codegen-backend = "llvm"
+
+[profile.test.package."*"]
+codegen-backend = "llvm"
+
+[profile.release]
+codegen-backend = "llvm"
+
+[profile.web]
+codegen-backend = "llvm"
+
 [target.x86_64-unknown-linux-gnu]
 linker = "clang"
 rustflags = [
-  "-C",
-  "link-arg=-fuse-ld=lld",
+  "-Clink-arg=-fuse-ld=mold",
+  "-Zshare-generics=y",
+  "-Zthreads=8",
 ]
+
+# Needed for building opencascade on sufficiently modern distros.
 
 [env]
 CMAKE_POLICY_VERSION_MINIMUM="3.5"

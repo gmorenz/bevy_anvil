@@ -7,7 +7,6 @@ edition = "2024"
 anvil_dylib = { path = "anvil_dylib", optional = true }
 anvil = { path = "../anvil" }
 bevy = "0.16.1"
-stl_io = "0.8.3"
 
 [dev-dependencies]
 bevy_simple_subsecond_system = { git = "https://github.com/TheBevyFlock/bevy_simple_subsecond_system", rev = "e912f4494a8643385c54498020e5ee243be133d6" }
