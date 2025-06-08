@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use bevy_simple_subsecond_system::prelude::*;
 
 use bevy_anvil::{
-    anvil::{Axis3D, Cuboid, Cylinder, IntoAngle as _, IntoLength as _, Point3D},
+    anvil::{Axis, Cuboid, Cylinder, IntoAngle as _, IntoLength as _, Point},
     part_to_mesh,
 };
 
@@ -61,19 +61,19 @@ fn add_cube(
     let block = Cuboid::from_dim(block_width, block_width, block_height);
 
     let studs = Cylinder::from_diameter(stud_diameter, stud_height)
-        .move_to(Point3D::new(
+        .move_to(Point::new([
             stud_distance / 2.,
             stud_distance / 2.,
             (block_height + stud_height) / 2.,
-        ))
-        .circular_pattern(Axis3D::z(), 4);
+        ]))
+        .circular_pattern(Axis::<3>::z(), 4);
 
     let inner_block = Cuboid::from_dim(
         block_width - thickness,
         block_width - thickness,
         block_height,
     )
-    .move_to(Point3D::new(0.0.mm(), 0.0.mm(), thickness * -0.5));
+    .move_to(Point::new([0.0.mm(), 0.0.mm(), thickness * -0.5]));
 
     let inner_tube = Cylinder::from_diameter(tube_diameter, block_height - thickness).subtract(
         &Cylinder::from_diameter(tube_diameter - thickness / 2., block_height - thickness),
@@ -83,7 +83,7 @@ fn add_cube(
         .add(&studs)
         .subtract(&inner_block)
         .add(&inner_tube)
-        .rotate_around(Axis3D::x(), -90.0.deg());
+        .rotate_around(Axis::<3>::x(), -90.0.deg());
 
     let mesh = match part_to_mesh(part) {
         Ok(mesh) => mesh,

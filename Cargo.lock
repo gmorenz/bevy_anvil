@@ -148,19 +148,11 @@ checksum = "55cc3b69f167a1ef2e161439aa98aed94e6028e5f9a59be9a6ffb47aef1651f9"
 
 [[package]]
 name = "anvil"
-version = "0.2.0"
+version = "0.1.0"
+source = "git+https://github.com/paramatrix-dev/anvil/?rev=126b414f4360d7a1adac3b889d1438a350aecf50#126b414f4360d7a1adac3b889d1438a350aecf50"
 dependencies = [
  "cxx",
- "opencascade-sys",
- "tempfile",
-]
-
-[[package]]
-name = "anvil"
-version = "0.2.0"
-source = "git+https://github.com/gmorenz/anvil/?rev=a46dcf73c26058df282caa43d0f82e997059a2a1#a46dcf73c26058df282caa43d0f82e997059a2a1"
-dependencies = [
- "cxx",
+ "iter_fixed",
  "opencascade-sys",
  "tempfile",
 ]
@@ -169,7 +161,7 @@ dependencies = [
 name = "anvil_dylib"
 version = "0.1.0"
 dependencies = [
- "anvil 0.2.0 (git+https://github.com/gmorenz/anvil/?rev=a46dcf73c26058df282caa43d0f82e997059a2a1)",
+ "anvil",
 ]
 
 [[package]]
@@ -385,7 +377,7 @@ dependencies = [
 name = "bevy_anvil"
 version = "0.1.0"
 dependencies = [
- "anvil 0.2.0",
+ "anvil",
  "anvil_dylib",
  "bevy",
  "bevy_simple_subsecond_system",
@@ -2793,6 +2785,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "iter_fixed"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "592ff74cdc6a923b2ae357dad7db2f5dcbf5d4ace9afcf3ab7c7f20b209fd949"
+
+[[package]]
 name = "itertools"
 version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3553,7 +3551,7 @@ checksum = "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d"
 [[package]]
 name = "opencascade-sys"
 version = "0.2.0"
-source = "git+https://github.com/bschwind/opencascade-rs?rev=d1db1bf1fb58dd094144532aa0e5c22106d61083#d1db1bf1fb58dd094144532aa0e5c22106d61083"
+source = "git+https://github.com/bschwind/opencascade-rs?rev=c30da56647c2a60393984458439180886ecaf951#c30da56647c2a60393984458439180886ecaf951"
 dependencies = [
  "cmake",
  "cxx",

@@ -7,4 +7,4 @@ edition = "2024"
 crate-type = ["dylib"]
 
 [dependencies]
-anvil = { git = "https://github.com/gmorenz/anvil/", rev = "a46dcf73c26058df282caa43d0f82e997059a2a1" }
+anvil = { git = "https://github.com/paramatrix-dev/anvil/", rev = "126b414f4360d7a1adac3b889d1438a350aecf50" }

@@ -25,49 +25,40 @@ pub fn part_to_mesh(part: Part) -> Result<Mesh, Box<dyn Error>> {
         RenderAssetUsages::default(),
     );
 
-    let vertices = indexed_mesh
-        .vertices
-        .into_iter()
-        .map(|v| Vec3::from_array(v.map(|coord: f64| coord as f32)))
-        .collect::<Vec<_>>();
-
-    let mut normals: Vec<Vec3> = vec![Vec3::ZERO; vertices.len()];
-
-    // Calculate face normals and accumulate at vertices
-    for &triangle in &indexed_mesh.indices {
-        let vs = triangle.map(|i| vertices[i]);
-
-        // Calculate edges using Vec3 subtraction
-        let edge1 = vs[1] - vs[0];
-        let edge2 = vs[2] - vs[0];
-
-        // Calculate cross product (face normal) using Vec3::cross
-        let face_normal = edge1.cross(edge2);
-
-        // Accumulate at each vertex using Vec3 addition
-        for vertex_idx in triangle {
-            normals[vertex_idx] += face_normal;
-        }
-    }
-
-    // Normalize the accumulated normals using Vec3::normalize_or_zero
-    for normal in &mut normals {
-        *normal = normal.normalize_or_zero();
-    }
-
-    let indices = indexed_mesh
-        .indices
-        .into_iter()
-        .flat_map(|ids| ids.map(|i| i as u32))
-        .collect::<Vec<_>>();
-
     // TODO: Figure out how to generate some sort of reasonable uv's, maybe?
     // For now this is what bevy_stl did so it's good enough to not break
     // anything too badly.
-    mesh.insert_attribute(Mesh::ATTRIBUTE_UV_0, vec![Vec2::ZERO; vertices.len()]);
-    mesh.insert_attribute(Mesh::ATTRIBUTE_POSITION, vertices);
-    mesh.insert_attribute(Mesh::ATTRIBUTE_NORMAL, normals);
-    mesh.insert_indices(Indices::U32(indices));
+    mesh.insert_attribute(
+        Mesh::ATTRIBUTE_UV_0,
+        indexed_mesh
+            .uvs
+            .iter()
+            .map(|uv| uv.map(|coord: f64| coord as f32))
+            .collect::<Vec<_>>(),
+    );
+    mesh.insert_attribute(
+        Mesh::ATTRIBUTE_POSITION,
+        indexed_mesh
+            .vertices
+            .iter()
+            .map(|uv| uv.map(|coord: f64| coord as f32))
+            .collect::<Vec<_>>(),
+    );
+    mesh.insert_attribute(
+        Mesh::ATTRIBUTE_NORMAL,
+        indexed_mesh
+            .normals
+            .iter()
+            .map(|uv| uv.map(|coord: f64| coord as f32))
+            .collect::<Vec<_>>(),
+    );
+    mesh.insert_indices(Indices::U32(
+        indexed_mesh
+            .indices
+            .into_iter()
+            .flat_map(|ids| ids.map(|i| i as u32))
+            .collect::<Vec<_>>(),
+    ));
 
     Ok(mesh)
 }

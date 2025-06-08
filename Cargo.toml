@@ -5,7 +5,7 @@ edition = "2024"
 
 [dependencies]
 anvil_dylib = { path = "anvil_dylib", optional = true }
-anvil = { path = "../anvil" }
+anvil = { git = "https://github.com/paramatrix-dev/anvil/", rev = "126b414f4360d7a1adac3b889d1438a350aecf50" }
 bevy = "0.16.1"
 
 [dev-dependencies]
